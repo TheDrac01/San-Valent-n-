@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>San Valentín</title>
+<style>
+body{
+    background: #ffb6c1;
+    text-align:center;
+    font-family: Arial;
+    overflow:hidden;
+}
+h1{
+    margin-top:100px;
+    font-size:30px;
+}
+button{
+    padding:12px 25px;
+    font-size:18px;
+    border:none;
+    border-radius:12px;
+    cursor:pointer;
+}
+#si{
+    background:red;
+    color:white;
+}
+#no{
+    position:absolute;
+}
+.corazon{
+    position:fixed;
+    top:-10px;
+    font-size:20px;
+    animation: caer 5s linear infinite;
+}
+@keyframes caer{
+    0%{transform: translateY(0);}
+    100%{transform: translateY(100vh);}
+}
+</style>
+</head>
+<body>
+
+<h1>¿Quieres ser mi San Valentín? 💖</h1>
+
+<button id="si" onclick="alert('Sabía que dirías que sí 😍💘')">Sí</button>
+<button id="no" onmouseover="mover()">No</button>
+
+<script>
+function mover(){
+    var x = Math.random() * window.innerWidth;
+    var y = Math.random() * window.innerHeight;
+    document.getElementById("no").style.left = x + "px";
+    document.getElementById("no").style.top = y + "px";
+}
+
+function corazones(){
+    const corazon = document.createElement("div");
+    corazon.classList.add("corazon");
+    corazon.innerHTML = "💖";
+    corazon.style.left = Math.random() * 100 + "vw";
+    corazon.style.animationDuration = (Math.random()*3+2) + "s";
+    document.body.appendChild(corazon);
+
+    setTimeout(()=>{corazon.remove();},5000);
+}
+
+setInterval(corazones,300);
+</script>
+
+</body>
+</html>
